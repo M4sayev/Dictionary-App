@@ -6,19 +6,21 @@ import Word from './Word';
 
 const Input = (props) => {
     
+    const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
     const setClassName = props.function;
     const [inputValue, setInputValue] = useState('');
     const [isActive, setIsActive] = useState(false);
     const setBoxVisible = props.setVisibility;
     const boxVisible = props.visibility;
+    const setWord = props.setWord;
+    const word = (props.word).toLowerCase();
+    const setWordData = props.setWordData;
 
     const text = 'Search';
     const place_holder = 'Type your word';
 
-    let word = '';
-
     function saveWordInput() {
-        word = inputValue;
+        setWord(inputValue);
         setInputValue('');
     }
     function displayValue(event) {
@@ -33,15 +35,12 @@ const Input = (props) => {
     
     function search() {
         saveWordInput();
-
+        console.log(word);
+        fetch(`${URL}${word}`).then((res) => res.json()).then((data) => {
+            setWordData(data);
+            console.log(data);
+        });
         setBoxVisible(!boxVisible);
-        // if (!isActive) {
-        //     setClassName('box-transformed');
-        //     setIsActive(true);
-        // } else {
-        //     setClassName('box');
-        //     setIsActive(false);
-        // }
     }
 
     return (  
