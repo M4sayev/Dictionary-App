@@ -23,11 +23,12 @@
 
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     padding: 1em 1em;
 }
 .app > h1 {
     color: var(--darkish-green);
     margin-block: 1.75rem;
+    
+    text-align: center;
 }
