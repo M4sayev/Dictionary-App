@@ -3,10 +3,9 @@ import './Input.css';
 import { useState, useRef, useEffect } from 'react';
 import Word from './Word';
 
-
 const Input = (props) => {
     
-    const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+    
     const setClassName = props.function;
     const [inputValue, setInputValue] = useState('');
     const [isActive, setIsActive] = useState(false);
@@ -15,6 +14,16 @@ const Input = (props) => {
     const setWord = props.setWord;
     const word = (props.word).toLowerCase();
     const setWordData = props.setWordData;
+
+    const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+
+    const fetchWord = async () => {
+        const res = await fetch(`${URL}${word}`);
+        const result = await res.json();
+
+        setWordData(result);
+        console.log(result);
+    }  
 
     const text = 'Search';
     const place_holder = 'Type your word';
@@ -31,21 +40,18 @@ const Input = (props) => {
     }
     function changeValue(event) {
         setInputValue(event.target.value);
+        setWord(event.target.value);
     }
     
     function search() {
         saveWordInput();
-        console.log(word);
-        fetch(`${URL}${word}`).then((res) => res.json()).then((data) => {
-            setWordData(data);
-            console.log(data);
-        });
+        if (word != '') fetchWord();
         setBoxVisible(!boxVisible);
     }
 
     return (  
         <div className='input'>
-            <input className='form' placeholder={place_holder} onKeyDown={ (event) => {displayValue(event)} } value={ inputValue } onChange ={ changeValue } spellCheck='false'/>
+            <input className='form' placeholder={place_holder} onKeyUp={ (event) => {displayValue(event)} } value={ inputValue } onChange ={ changeValue } spellCheck='false'/>
             <button className='search-button' onClick={ search }>{ text }</button>
         </div>
     );
