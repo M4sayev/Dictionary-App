@@ -10,7 +10,9 @@ const Input = (props) => {
     const setWord = props.setWord;
     const word = (props.word).toLowerCase();
     const setWordData = props.setWordData;
-    const setAlert = props.setAlert;
+    const setIsInError = props.setIsInError;
+    const setTracker = props.setTracker;
+    const tracker = props.tracker;
 
     const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 
@@ -20,11 +22,11 @@ const Input = (props) => {
             const res = await fetch(`${URL}${word}`);
             if (res.ok) {
                 const result = await res.json();
-                console.log(result);
                 setWordData(result);
-                setAlert('');
+                setIsInError(false);
             } else {
-                setAlert('No such word found');
+                setIsInError(true);
+                setTracker(!tracker);
             }
         } catch {
             console.log('Promise rejected');
@@ -47,8 +49,10 @@ const Input = (props) => {
     }
     
     function search() {
+        console.log(word);
         fetchWord();
-        setBoxVisible(!boxVisible);
+        setBoxVisible(true);
+        setWord('')
     }
 
     return (  
