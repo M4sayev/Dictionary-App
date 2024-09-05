@@ -17,10 +17,16 @@ const Word = (props) => {
     };
 
     const state = 'on';
+
+    console.log(wordData);
     return (
         <div>
-            
-            {  (wordData != null && wordData != undefined) ? 
+            {  
+                
+                
+                
+                
+                (wordData != null && wordData != undefined) ? 
                 (boxVisible == true ?
                     (<div className={ 'box-transformed' }> 
                         <div>
@@ -40,10 +46,11 @@ const Word = (props) => {
                         <p className='ipa-part'> { wordData[0].meanings[0].partOfSpeech } <i style={ styleIpa }> /{ wordData[0].phonetic }/</i></p>
                         <div className='definition'>{ wordData[0].meanings[0].definitions[0].definition }</div>
                         <div className='example'>{ wordData[0].meanings[0].definitions[0].example }</div>
-                    </div>)) : <div style={{
-                        textAlign: "center",
-                        color: "var(--darkish-green)"
-                    }}>Loading...</div>
+                    </div>)) : (wordData === 'NotF') ? <div>Not Found</div>
+                    : <div style={{ textAlign: "center", color: "var(--darkish-green)"}}></div> 
+
+                
+            
         
              
              

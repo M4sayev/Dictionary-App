@@ -20,9 +20,13 @@ const Input = (props) => {
     const fetchWord = async () => {
         const res = await fetch(`${URL}${word}`);
         const result = await res.json();
-
-        setWordData(result);
+        
         console.log(result);
+        if (result.title === undefined) {
+            setWordData(result);
+        } else {
+            setWordData('NotF');
+        }
     }  
 
     const text = 'Search';
@@ -45,7 +49,12 @@ const Input = (props) => {
     
     function search() {
         saveWordInput();
-        if (word != '') fetchWord();
+        try {
+            fetchWord();
+        }
+        catch(err) {
+            alert(err);
+        }
         setBoxVisible(!boxVisible);
     }
 
