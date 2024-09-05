@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 
 
 const Word = (props) => {
-    const className = props.state;
     const boxVisible = props.visibility;
     const wordData = props.wordData;
     
