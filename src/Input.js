@@ -10,19 +10,28 @@ const Input = (props) => {
     const setWord = props.setWord;
     const word = (props.word).toLowerCase();
     const setWordData = props.setWordData;
+    const setAlert = props.setAlert;
 
     const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 
     const fetchWord = async () => {
-        const res = await fetch(`${URL}${word}`);
-        const result = await res.json();
         
-        console.log(result);
-        if (result.title === undefined) {
-            setWordData(result);
-        } else {
-            setWordData('NotF');
+        try {
+            const res = await fetch(`${URL}${word}`);
+            if (res.ok) {
+                const result = await res.json();
+                console.log(result);
+                setWordData(result);
+                setAlert('');
+            } else {
+                setAlert('No such word found');
+            }
+        } catch {
+            console.log('Promise rejected');
         }
+        
+
+       
     }  
 
     const text = 'Search';
