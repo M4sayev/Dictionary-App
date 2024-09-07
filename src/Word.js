@@ -1,6 +1,6 @@
 import { jsx } from 'react/jsx-runtime';
 import './Word.css';
-import Audio from './audio.png'
+import AudioImg from './audio.png'
 import { useEffect, useState } from 'react';
 
 const Word = (props) => {
@@ -22,14 +22,23 @@ const Word = (props) => {
         }, 1000);
     }
 
+
     const Innerpart = () => {
+
+        function play() {
+            const audio = new Audio(wordData[0].phonetics[0].audio);
+            console.log(audio.src);
+            if (audio.src === 'http://localhost:3000/') alert('No sound found');
+            else audio.play();
+        }
+
         if (wordData != null && wordData != undefined) {
             if (boxVisible) {
                 return (
                 <div className={ 'box-transformed' }> 
                     <div>
                         <p className='selected-word'>{ wordData[0].word }</p>
-                        <img src={Audio}/>
+                        <img src={ AudioImg } onClick={ play }/>
                     </div>
                     <p className='ipa-part'> { wordData[0].meanings[0].partOfSpeech } <i style={ styleIpa }> { wordData[0].phonetic }</i></p>
                     <div className='definition'>{ wordData[0].meanings[0].definitions[0].definition }</div>
