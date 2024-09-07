@@ -1,6 +1,6 @@
 import { jsx } from 'react/jsx-runtime';
-import './Word.css';
-import AudioImg from './audio.png'
+import './styles/Word.css';
+import AudioImg from '../audio.png'
 import { useEffect, useState } from 'react';
 
 const Word = (props) => {
@@ -27,7 +27,6 @@ const Word = (props) => {
 
         function play() {
             const audio = new Audio(wordData[0].phonetics[0].audio);
-            console.log(audio.src);
             if (audio.src === 'http://localhost:3000/') alert('No sound found');
             else audio.play();
         }
@@ -62,7 +61,6 @@ const Word = (props) => {
     };
 
     useEffect(() => {
-        console.log(notFound);
         if (isInError !== '' && isInError) changeText();
     }, [tracker]);
 

@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import Input from "./Input";
 import Word from './Word';
 import { useState } from 'react';

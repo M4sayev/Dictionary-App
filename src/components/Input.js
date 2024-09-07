@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import './Input.css';
+import './styles/Input.css';
 import { useState, useRef, useEffect } from 'react';
 import Word from './Word';
 
@@ -49,7 +49,6 @@ const Input = (props) => {
     }
     
     function search() {
-        console.log(word);
         fetchWord();
         setBoxVisible(true);
         setWord('')
