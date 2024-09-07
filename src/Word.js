@@ -66,12 +66,6 @@ const Word = (props) => {
         if (isInError !== '' && isInError) changeText();
     }, [tracker]);
 
-    /*  
-        <div className={ 'box-transformed' }> 
-            <div style={{ textAlign: "center", color: "var(--darkish-green)", margin: "5em 7.5em"}}> { alert }</div> 
-        </div> 
-    */
-
     return (
         <div> 
             { (isInError === '') ? <div></div> : ((!isInError) ? <Innerpart /> : <div style={{ textAlign: "center", color: "var(--darkish-green)"}}> { notFound }</div>)}

@@ -42,6 +42,13 @@ img {
     width: 30px;
     cursor: pointer;
 }
+img:hover {
+    opacity: 0.95;
+    filter: sepia(30%);
+}
+img:active {
+    filter: sepia(60%);
+}
 .ipa-part {
     font-size: 0.875rem;
     margin-block: 0.375em;
