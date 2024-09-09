@@ -6,14 +6,8 @@ import { useEffect, useState } from 'react';
 const Word = (props) => {
     const [ notFound, setNotFound ] = useState('');
 
-    const boxVisible = props.visibilityArray[0],
-    setBoxVisible = props.visibilityArray[1];
-
-
-    const wordData = props.wordData;
-    const word = props.word;
-    const isInError = props.isInError;
-    const tracker = props.tracker;
+    const [ boxVisible, setBoxVisible ]  = props.visibilityArray;
+    const { word, wordData, isInError, tracker } = props;
     
     const styleIpa = {marginInline: '7px'};
     
@@ -38,21 +32,6 @@ const Word = (props) => {
             }
         }
 
-        /* <div style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-            }}>
-                <p className='selected-word'>{ wordData[0].word }</p>
-                <img src={ AudioImg } onClick={ play }/>
-            </div>
-            <div className='definition-part'>
-                <p className='ipa-part'> { wordData[0].meanings[0].partOfSpeech } <i style={ styleIpa }> { wordData[0].phonetic }</i></p>
-                <div className='definition'>{ wordData[0].meanings[0].definitions[0].definition }</div>
-                <div className='example'>{ wordData[0].meanings[0].definitions[0].example  }</div>
-            </div>                 
-        */
-
         if (wordData != null && wordData != undefined) {
                 
             return (
@@ -61,20 +40,20 @@ const Word = (props) => {
                 }}
                 className='box-transformed'
                 >  
-                    {wordData.map((definition, index) => (
-                        <div key={ definition }>
+                    {wordData.map(( definition, index ) => (
+                        <div key={ index }>
                             <div style={{
                                 display: 'flex',
                                 justifyContent: 'space-between',
                                 alignItems: 'center'
                             }}>
-                                <p className='selected-word'>{ wordData[index].word }</p>
+                                <p className='selected-word'>{ (definition.meanings[0].partOfSpeech === 'verb') ? ('to ' + definition.word) : definition.word }</p>
                                 <img src={ AudioImg } onClick={ play }/>
                             </div>
                             <div className='definition-part'>
-                                <p className='ipa-part'> { wordData[index].meanings[0].partOfSpeech } <i style={ styleIpa }> { wordData[index].phonetic }</i></p>
-                                <div className='definition'>{ wordData[index].meanings[0].definitions[0].definition }</div>
-                                <div className='example'>{ wordData[index].meanings[0].definitions[0].example  }</div>
+                                <p className='ipa-part'> { definition.meanings[0].partOfSpeech } <i style={ styleIpa }> { definition.phonetic }</i></p>
+                                <div className='definition'>{ definition.meanings[0].definitions[0].definition }</div>
+                                <div className='example'>{ definition.meanings[0].definitions[0].example  }</div>
                             </div>  
                         </div>
                      ))}

@@ -7,23 +7,16 @@ const Input = (props) => {
     const text = 'Search';
     const place_holder = 'Type your word';
     
-    const boxVisible = props.visibilityArray[0],
-    setBoxVisible = props.visibilityArray[1];
-
-    const word = (props.wordArray[0]).toLowerCase(),
-    setWord = props.wordArray[1];
-    
-    const setWordData = props.setWordData;
-    const setIsInError = props.setIsInError;
-
-    const tracker = props.trackerArray[0],
-    setTracker = props.trackerArray[1];
+    const [ boxVisible, setBoxVisible ] = props.visibilityArray;
+    const [ word, setWord ] = props.wordArray;
+    const { setWordData, setIsInError }  = props;
+    const [ tracker, setTracker ] = props.trackerArray;
 
     const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
 
     const fetchWord = async () => {    
         try {
-            const res = await fetch(`${URL}${word}`);
+            const res = await fetch(`${URL}${word.toLowerCase()}`);
             if (res.ok) {
                 const result = await res.json();
                 setWordData(result);
@@ -42,9 +35,11 @@ const Input = (props) => {
             search();
         }
     }
+
     function changeValue(event) {
         setWord(event.target.value);
     } 
+    
     function search() {
         fetchWord();
         setBoxVisible(true);

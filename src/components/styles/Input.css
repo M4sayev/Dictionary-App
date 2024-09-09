@@ -1,16 +1,16 @@
 .input {
     margin-bottom: 0.75em;
+
     display: flex;
 }
 .form {
     padding-inline: 0.75em;
     
     flex: 4;
+    width: clamp(150px, 40vw, 280px);
 
     border-radius: 10px 0 0 10px;
     border: none;
-
-    width: clamp(150px, 40vw,280px);
 
     background-color: var(--primary-color);
 
@@ -26,10 +26,10 @@
 .form::placeholder {
     background: var(--gradient);
     background-clip: text;
-    color: transparent;
-
     background-size: 300%;
     background-position: left bottom;
+
+    color: transparent;
 
     transition: background-position 500ms ease-in-out;
 }
@@ -42,11 +42,13 @@
     right: 1px;
 
     flex: 1;
+    
+    padding: 0.5em .75em;
+
+    background-color: var(--darkish-green);
     background-image: var(--gradient);
     background-size: 300%;
     background-position: left bottom;
-
-    padding: 0.5em .75em;
 
     border: none;
     border-radius: 0 10px 10px 0;
@@ -55,9 +57,7 @@
     font-size: 1.25rem;
 
     transition: background-position 500ms ease-in-out;
-
     cursor: pointer;
-    background-color: var(--darkish-green);
 }
 .search-button:hover {
     background-position: right top;
