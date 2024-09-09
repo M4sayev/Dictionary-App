@@ -14,13 +14,11 @@ function App() {
   return (
     <div className="app">
       <h1>My Dictionary</h1>
-      <Input setVisibility={ setBoxVisible } visibility={ boxVisible } setWord={ setWord } setWordData={ setWordData } word={ word } setIsInError={ setIsInError } tracker={ tracker } setTracker= { setTracker }/>
-      <Word visibility={ boxVisible } wordData={ wordData } word={ word } isInError={ isInError } tracker={ tracker }/>
+      <Input visibilityArray ={[ boxVisible, setBoxVisible ]} wordArray={[ word, setWord ]} setWordData={ setWordData } setIsInError={ setIsInError } trackerArray ={[ tracker, setTracker ]}/>
+      <Word visibilityArray ={[ boxVisible, setBoxVisible ]} wordData={ wordData } word={ word } isInError={ isInError } tracker={ tracker }/>
     </div>
   );
 
 }
-document.body.style.backgroundColor = '#d8a7b1';
-
 
 export default App;

@@ -1,6 +1,6 @@
 :root {
     --primary-color: hsl(18, 72%, 93%);
-    --darkish-green: hsl(160, 43%, 30%);
+    --darkish-green: #2c6d57;
     --clr-accent: hsl(95, 45%, 50%);
     --gradient: linear-gradient(
         45deg,
@@ -27,7 +27,7 @@
     padding: 1em 1em;
 }
 .app > h1 {
-    color: var(--darkish-green);
+    color: var(--primary-color);
     margin-block: 1.75rem;
     
     text-align: center;

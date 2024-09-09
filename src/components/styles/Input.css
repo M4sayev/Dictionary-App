@@ -1,19 +1,20 @@
 .input {
     margin-bottom: 0.75em;
     display: flex;
-    width: 100%;
 }
 .form {
-    padding: 0.5em 0.75em;
+    padding-inline: 0.75em;
     
     flex: 4;
 
     border-radius: 10px 0 0 10px;
     border: none;
 
+    width: clamp(150px, 40vw,280px);
+
     background-color: var(--primary-color);
 
-    font-size: 1.25rem;
+    font-size: min(calc(1vw + 0.75em), 1.25rem);
     color: var(--clr-accent);
 }
 .form:focus {
@@ -36,6 +37,10 @@
     background-position: right top;
 }
 .search-button {
+    /* remove a whitespace between button and an input element */
+    position: relative;
+    right: 1px;
+
     flex: 1;
     background-image: var(--gradient);
     background-size: 300%;
@@ -52,6 +57,7 @@
     transition: background-position 500ms ease-in-out;
 
     cursor: pointer;
+    background-color: var(--darkish-green);
 }
 .search-button:hover {
     background-position: right top;
