@@ -1,6 +1,6 @@
 import { jsx } from 'react/jsx-runtime';
 import './styles/Word.css';
-import AudioImg from '../audio.png'
+import AudioImg from './images/audio.png'
 import { useEffect, useState } from 'react';
 
 const Word = (props) => {

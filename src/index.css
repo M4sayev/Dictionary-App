@@ -1,7 +1,8 @@
 body {
-    background-image: url(bg-desktop.png);
-    max-width: 100%;
+    background-image: url(./components/images/bg-desktop.png);
     background-size: cover;
+
+    max-width: 100%;
 }
 @media only screen and (max-width: 500px) {
     body {
