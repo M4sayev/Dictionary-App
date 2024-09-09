@@ -38,34 +38,53 @@ const Word = (props) => {
             }
         }
 
+        /* <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+            }}>
+                <p className='selected-word'>{ wordData[0].word }</p>
+                <img src={ AudioImg } onClick={ play }/>
+            </div>
+            <div className='definition-part'>
+                <p className='ipa-part'> { wordData[0].meanings[0].partOfSpeech } <i style={ styleIpa }> { wordData[0].phonetic }</i></p>
+                <div className='definition'>{ wordData[0].meanings[0].definitions[0].definition }</div>
+                <div className='example'>{ wordData[0].meanings[0].definitions[0].example  }</div>
+            </div>                 
+        */
+
         if (wordData != null && wordData != undefined) {
+                
             return (
                 <div style={{
                     transform: boxVisible ? 'translateY(0)' : 'translateY(-100px)',
                 }}
                 className='box-transformed'
-                > 
-                    <div style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center'
-                    }}>
-                        <p className='selected-word'>{ wordData[0].word }</p>
-                        <img src={ AudioImg } onClick={ play }/>
-                    </div>
-                    <p className='ipa-part'> { wordData[0].meanings[0].partOfSpeech } <i style={ styleIpa }> { wordData[0].phonetic }</i></p>
-                    <div className='definition'>{ wordData[0].meanings[0].definitions[0].definition }</div>
-                    <div className='example'>{ wordData[0].meanings[0].definitions[0].example  }</div>
+                >  
+                    {wordData.map((definition, index) => (
+                        <div key={ definition }>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center'
+                            }}>
+                                <p className='selected-word'>{ wordData[index].word }</p>
+                                <img src={ AudioImg } onClick={ play }/>
+                            </div>
+                            <div className='definition-part'>
+                                <p className='ipa-part'> { wordData[index].meanings[0].partOfSpeech } <i style={ styleIpa }> { wordData[index].phonetic }</i></p>
+                                <div className='definition'>{ wordData[index].meanings[0].definitions[0].definition }</div>
+                                <div className='example'>{ wordData[index].meanings[0].definitions[0].example  }</div>
+                            </div>  
+                        </div>
+                     ))}
+
                 </div>
             )
         } else {
             <div className={ 'box-transformed' }> Word not found </div>
         }
     };
-
-    useEffect(() => {
-        console.log(`boxVisible: ${boxVisible}`);
-    }, [boxVisible]);
 
     useEffect(() => {
         if (isInError !== '' && isInError) changeText();

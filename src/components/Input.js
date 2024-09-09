@@ -28,11 +28,9 @@ const Input = (props) => {
                 const result = await res.json();
                 setWordData(result);
                 setIsInError(false);
-                console.log(result);
             } else {
                 setIsInError(true);
                 setTracker(!tracker);
-                console.log('wrong word block');
             }
         } catch {
             console.log('Promise rejected');
@@ -51,7 +49,6 @@ const Input = (props) => {
         fetchWord();
         setBoxVisible(true);
         setWord('')
-        console.log(boxVisible);
     }
 
     return (  
