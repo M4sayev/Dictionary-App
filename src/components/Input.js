@@ -1,15 +1,12 @@
-import userEvent from '@testing-library/user-event';
 import './styles/Input.css';
-import Word from './Word';
 
 const Input = (props) => {
 
     const text = 'Search';
     const place_holder = 'Type your word';
     
-    const [ boxVisible, setBoxVisible ] = props.visibilityArray;
     const [ word, setWord ] = props.wordArray;
-    const { setWordData, setIsInError }  = props;
+    const { setWordData, setIsInError, setBoxVisible } = props;
     const [ tracker, setTracker ] = props.trackerArray;
 
     const URL = 'https://api.dictionaryapi.dev/api/v2/entries/en/';

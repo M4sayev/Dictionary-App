@@ -1,4 +1,3 @@
-import { jsx } from 'react/jsx-runtime';
 import './styles/Word.css';
 import AudioImg from './images/audio.png'
 import { useEffect, useState } from 'react';
@@ -7,7 +6,7 @@ const Word = (props) => {
     const [ notFound, setNotFound ] = useState('');
 
     const [ boxVisible, setBoxVisible ]  = props.visibilityArray;
-    const { word, wordData, isInError, tracker } = props;
+    const { wordData, isInError, tracker } = props;
     
     const styleIpa = {marginInline: '7px'};
     
@@ -32,7 +31,7 @@ const Word = (props) => {
             }
         }
 
-        if (wordData != null && wordData != undefined) {
+        if (wordData !== null && wordData !== undefined) {
                 
             return (
                 <div style={{
@@ -70,7 +69,7 @@ const Word = (props) => {
     }, [tracker]);
 
     return (
-        <div className={(boxVisible || (isInError == true)) ? "wrap" : "wrap changed"}> 
+        <div className={(boxVisible || (isInError === true)) ? "wrap" : "wrap changed"}> 
             { (isInError === '') ? <div></div> : ((!isInError) ? <Innerpart /> : <div style={{ fontWeight: 'bold', fontSize: "1.25em", textAlign: "center", color: "#A04747"}}> { notFound }</div>)}
         </div>
     );

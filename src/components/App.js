@@ -14,8 +14,8 @@ function App() {
   return (
     <div className="app">
       <h1>My Dictionary</h1>
-      <Input visibilityArray ={[ boxVisible, setBoxVisible ]} wordArray={[ word, setWord ]} setWordData={ setWordData } setIsInError={ setIsInError } trackerArray ={[ tracker, setTracker ]}/>
-      <Word visibilityArray ={[ boxVisible, setBoxVisible ]} wordData={ wordData } word={ word } isInError={ isInError } tracker={ tracker }/>
+      <Input setBoxVisible ={ setBoxVisible } wordArray={[ word, setWord ]} setWordData={ setWordData } setIsInError={ setIsInError } trackerArray ={[ tracker, setTracker ]}/>
+      <Word visibilityArray ={[ boxVisible, setBoxVisible ]} wordData={ wordData } isInError={ isInError } tracker={ tracker }/>
     </div>
   );
 
