@@ -1,5 +1,7 @@
-# Dictionary-App (my first reacct project)
+# Dictionary-App 
 
 ## Description:
-  A pretty choppy and simple dictionary project,
-  involving fetching data from an API.
+  As my first react project I opted for making
+  a pretty choppy and simple dictionary project,
+  involving fetching data from an API. 
+
