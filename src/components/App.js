@@ -8,7 +8,7 @@ function App() {
   const [ word, setWord ] = useState('');
   const [ wordData, setWordData ] = useState(null);
   const [ isInError, setIsInError ] = useState('');
-  // to track how many times in an error block for useEffect
+  // to track how many times we are in an error block (for useEffect)
   const [ tracker, setTracker ] = useState(false);
 
   return (
